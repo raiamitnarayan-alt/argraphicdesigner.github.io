@@ -3,88 +3,120 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Portfolio — Your Name</title>
+<title>Amit Rai — Graphic Designer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 
 <style>
-/* ===== YOUR ORIGINAL CSS (SHORTENED HERE BUT KEEP YOURS) ===== */
-body{margin:0;font-family:Poppins;background:#0f1117;color:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:#0f1117;color:#fff}
 
-/* KEEP YOUR FULL ORIGINAL CSS HERE (important) */
-
-/* ===== ADD ONLY THIS BELOW ===== */
-
-.reveal{
-  opacity:0;
-  transform:translateY(60px);
-  transition:1s ease;
+/* NAV */
+nav{
+display:flex;justify-content:space-between;align-items:center;
+padding:20px 5%;position:fixed;width:100%;
+background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);
 }
-.reveal.show{
-  opacity:1;
-  transform:translateY(0);
-}
+nav h2{color:#00e5ff}
+nav ul{display:flex;gap:20px;list-style:none}
+nav ul li a{color:#aaa;text-decoration:none}
+nav ul li a:hover{color:#00e5ff}
 
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-15px)}
+/* HERO */
+.hero{
+height:100vh;display:flex;align-items:center;justify-content:space-between;
+padding:0 5%;
 }
-
-.hex-wrap{
-  animation:float 4s ease-in-out infinite;
-}
-
-.service-card:hover,
-.proj-card:hover,
-.review-card:hover{
-  transform:translateY(-10px) scale(1.02);
-  box-shadow:0 0 30px rgba(0,229,255,0.2);
+.hero h1{font-size:60px}
+.hero span{color:#00e5ff}
+.hero p{margin:10px 0;color:#aaa}
+.btn{
+padding:10px 20px;background:#00e5ff;color:#000;
+border:none;border-radius:25px;cursor:pointer;text-decoration:none;
 }
 
-.nav-links a:hover{
-  text-shadow:0 0 10px var(--cyan);
+/* SECTION */
+section{padding:80px 5%}
+h2{margin-bottom:20px}
+
+/* SERVICES */
+.cards{display:flex;gap:20px;flex-wrap:wrap}
+.card{
+background:#181c27;padding:20px;border-radius:10px;
+flex:1;min-width:220px
 }
+
+/* FOOTER */
+footer{text-align:center;padding:20px;background:#181c27;margin-top:40px}
 </style>
 </head>
 
 <body>
 
-<!-- KEEP YOUR FULL ORIGINAL HTML EXACTLY SAME -->
+<!-- NAV -->
+<nav>
+<h2>Amit<span>Rai</span></h2>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 
-<!-- ===== ADD THIS SCRIPT AT VERY END ===== -->
+<!-- HERO -->
+<section class="hero" id="home">
+<div>
+<h1>Amit Rai</h1>
+<h3 class="typing">Graphic Designer</h3>
+<p>I create bold and modern designs that help brands stand out and grow.</p>
+<a href="#contact" class="btn">Hire Me</a>
+</div>
+</section>
 
-<script>
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show")
-    }
-  })
-},{threshold:0.15});
+<!-- ABOUT -->
+<section id="about">
+<h2>About Me</h2>
+<p>
+I'm Amit Rai, a passionate Graphic Designer specializing in branding, social media creatives, and digital design.
+I focus on creating visually strong designs that communicate clearly and leave a lasting impression.
+</p>
+</section>
 
-document.querySelectorAll("section").forEach(el=>{
-  el.classList.add("reveal");
-  observer.observe(el);
-});
+<!-- SERVICES -->
+<section id="services">
+<h2>Services</h2>
+<div class="cards">
 
-// typing
-const roles=["Graphic Designer","UI/UX Designer","Web Developer"];
-let i=0,j=0,current="",isDeleting=false;
-const roleEl=document.querySelector(".role span");
+<div class="card">
+<h3>Brand Identity</h3>
+<p>Logo design, color palette, and full branding solutions.</p>
+</div>
 
-function type(){
-  current=roles[i];
-  roleEl.textContent=current.substring(0,j);
+<div class="card">
+<h3>Social Media Design</h3>
+<p>Creative posts, reels covers, and marketing graphics.</p>
+</div>
 
-  if(!isDeleting){j++} else {j--}
+<div class="card">
+<h3>UI Design</h3>
+<p>Modern website and app interface design.</p>
+</div>
 
-  if(j===current.length){isDeleting=true;setTimeout(type,1000);return;}
-  if(j===0){isDeleting=false;i=(i+1)%roles.length;}
+</div>
+</section>
 
-  setTimeout(type,isDeleting?50:100);
-}
-type();
-</script>
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact Me</h2>
+<p>Email: amit.design@gmail.com</p>
+<p>Phone: +91 9876543210</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 Amit Rai — Graphic Designer</p>
+</footer>
 
 </body>
 </html>
