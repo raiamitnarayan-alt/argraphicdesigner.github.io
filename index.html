@@ -1,9 +1,19 @@
-<!-- SAME CODE AS YOURS — ONLY ADDITIONS MARKED -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portfolio — Your Name</title>
 
-<!-- ADD THIS INSIDE YOUR <style> (at bottom) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+
 <style>
+/* ===== YOUR ORIGINAL CSS (SHORTENED HERE BUT KEEP YOURS) ===== */
+body{margin:0;font-family:Poppins;background:#0f1117;color:#fff}
 
-/* ===== ADDED ANIMATIONS ===== */
+/* KEEP YOUR FULL ORIGINAL CSS HERE (important) */
+
+/* ===== ADD ONLY THIS BELOW ===== */
 
 .reveal{
   opacity:0;
@@ -24,7 +34,6 @@
   animation:float 4s ease-in-out infinite;
 }
 
-/* Hover upgrade */
 .service-card:hover,
 .proj-card:hover,
 .review-card:hover{
@@ -32,18 +41,19 @@
   box-shadow:0 0 30px rgba(0,229,255,0.2);
 }
 
-/* Nav glow */
 .nav-links a:hover{
   text-shadow:0 0 10px var(--cyan);
 }
-
 </style>
+</head>
 
-<!-- ADD THIS BEFORE </body> -->
+<body>
+
+<!-- KEEP YOUR FULL ORIGINAL HTML EXACTLY SAME -->
+
+<!-- ===== ADD THIS SCRIPT AT VERY END ===== -->
 
 <script>
-
-// SCROLL REVEAL
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -57,7 +67,7 @@ document.querySelectorAll("section").forEach(el=>{
   observer.observe(el);
 });
 
-// TYPING EFFECT
+// typing
 const roles=["Graphic Designer","UI/UX Designer","Web Developer"];
 let i=0,j=0,current="",isDeleting=false;
 const roleEl=document.querySelector(".role span");
@@ -68,19 +78,13 @@ function type(){
 
   if(!isDeleting){j++} else {j--}
 
-  if(j===current.length){
-    isDeleting=true;
-    setTimeout(type,1000);
-    return;
-  }
-
-  if(j===0){
-    isDeleting=false;
-    i=(i+1)%roles.length;
-  }
+  if(j===current.length){isDeleting=true;setTimeout(type,1000);return;}
+  if(j===0){isDeleting=false;i=(i+1)%roles.length;}
 
   setTimeout(type,isDeleting?50:100);
 }
 type();
-
 </script>
+
+</body>
+</html>
