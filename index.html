@@ -75,7 +75,12 @@ section{padding:5.5rem 5% 4rem}
   clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
   background:linear-gradient(160deg,#1e2235 60%,#00334a);
   display:flex;align-items:center;justify-content:center;
-  font-size:5rem;
+  overflow:hidden; /* Ensures image fits within the shape */
+}
+.hex-inner img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures square-cropping within hex */
 }
 .hex-glow{
   position:absolute;inset:-20px;
@@ -296,7 +301,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.75rem 
     <div class="hex-wrap">
       <div class="hex-glow"></div>
       <div class="hex-shape">
-        <div class="hex-inner">🧑‍🎨</div>
+        <div class="hex-inner">
+           <img src="image_1.png" alt="Amit Rai Profile">
+        </div>
       </div>
     </div>
   </div>
@@ -312,7 +319,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.75rem 
     </div>
     <div class="about-text">
       <h2>About <span>Me</span></h2>
-      <h3>Designing with Purpose</h3>
+      <h3>Graphic Designer</h3>
       <p>My approach to graphic design is rooted in the belief that every brand has a story worth telling. Based in Kalyan, I specialize in transforming complex concepts into clean, functional, and aesthetically striking visuals. Whether it’s building a brand identity from scratch or creating engaging digital assets, I focus on precision and creativity.</p>
       <p>I am driven by the challenge of staying ahead of design trends while maintaining timeless quality. My philosophy is simple: design should not only look good but should solve problems and create a lasting connection with the audience.</p>
       <div style="display:flex;gap:1rem;flex-wrap:wrap">
