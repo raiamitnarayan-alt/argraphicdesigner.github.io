@@ -145,10 +145,27 @@ section{padding:5.5rem 5% 4rem}
 .btn-sm{padding:.5rem 1.25rem;font-size:.78rem}
 
 /* ── PROJECTS ── */
+/* ── PROJECTS ── */
 #projects{background:var(--bg2)}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.proj-card{border-radius:10px;overflow:hidden;position:relative;aspect-ratio:4/3;cursor:pointer;background:var(--bg3)}
-.proj-thumb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;transition:transform .4s}
+
+.proj-card{
+  border-radius:10px;
+  overflow:hidden;
+  position:relative;
+  aspect-ratio:4/3;
+  cursor:pointer;
+  background:var(--bg3);
+}
+
+/* ✅ ADD THIS HERE */
+.proj-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.proj-thumb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;transition:transform .4s;overflow:hidden;}
 .proj-overlay{
   position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 60%);
   opacity:0;transition:opacity .3s;display:flex;flex-direction:column;
@@ -379,15 +396,16 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.75rem 
 
   <div class="projects-grid">
 
-    <a href="project1.html" class="proj-card">
-     <img src="https://i.ibb.co/twxBtvkH/Untitled-1.jpg" 
-           class="proj-img" 
-           alt="Project">
-      <div class="proj-overlay">
-        <h4>Social Media Post</h4>
-        <p>Branding · Web</p>
-      </div>
-    </a>
+   <a href="project1.html" class="proj-card">
+  <div class="proj-thumb">
+    <img src="https://i.ibb.co/twxBtvkH/Untitled-1.jpg" class="proj-img" alt="Project">
+  </div>
+
+  <div class="proj-overlay">
+    <h4>Social Media Post</h4>
+    <p>Branding · Web</p>
+  </div>
+</a>
 
     <div class="proj-card p2">
       <div class="proj-thumb" style="flex-direction:column;gap:.5rem">
