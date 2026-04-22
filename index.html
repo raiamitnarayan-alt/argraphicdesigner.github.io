@@ -18,7 +18,6 @@
   --muted:#7a8099;
   --border:rgba(0,229,255,0.12);
   --ff:'Poppins',sans-serif;
-  --gold:#f9b233;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--ff);overflow-x:hidden}
@@ -71,22 +70,35 @@ section{padding:5.5rem 5% 4rem}
   background:var(--bg2);
 }
 .hex-inner{
-  position:relative;z-index:1;width:220px;height:260px;
+  position:relative;
+  z-index:1;
+  width:220px;
+  height:260px;
   clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
 }
-.hex-inner img{width:100%;height:100%;object-fit:cover}
+
+.hex-inner img{
+  width:100%;
+  height:100%;
+  object-fit:cover; /* better than contain */
+}
 .hex-glow{
   position:absolute;inset:-20px;
   clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
   background:radial-gradient(ellipse at center,rgba(0,229,255,0.25) 0%,transparent 70%);
-  z-index:-1;animation:hexPulse 3s ease-in-out infinite;
+  z-index:-1;
+  animation:hexPulse 3s ease-in-out infinite;
 }
 @keyframes hexPulse{0%,100%{opacity:.6}50%{opacity:1}}
 
 /* ── HERO ── */
 #home{
-  min-height:100vh;display:flex;align-items:center;padding-top:5rem;
+  min-height:100vh;display:flex;align-items:center;
+  padding-top:5rem;
   background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(0,229,255,0.06) 0%,transparent 70%);
 }
 .hero-inner{display:flex;align-items:center;justify-content:space-between;gap:3rem;width:100%}
@@ -107,60 +119,20 @@ section{padding:5.5rem 5% 4rem}
 #about{background:var(--bg2)}
 .about-inner{display:flex;gap:4rem;align-items:center}
 .about-text{flex:1}
+.about-text h2{font-size:2rem;font-weight:700;color:#fff;margin-bottom:1rem}
+.about-text h2 span{color:var(--cyan)}
+.about-text h3{font-size:1.05rem;font-weight:600;color:var(--cyan);margin-bottom:1rem}
+.about-text p{font-size:.88rem;color:var(--muted);line-height:1.9;margin-bottom:1.5rem}
 
-/* ── INTEGRATED COUNTDOWN SECTION ── */
-#launch-countdown {
-  background: var(--bg);
-  text-align: center;
-  padding: 5rem 5%;
-}
-.countdown-grid {
-  display: flex;
-  justify-content: center;
-  gap: clamp(10px, 3vw, 25px);
-  flex-wrap: wrap; /* Critical for device fitting */
-  margin-bottom: 40px;
-}
-.flip-card {
-  width: clamp(80px, 15vw, 130px);
-  height: clamp(90px, 16vw, 140px);
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: clamp(1.8rem, 4vw, 3.5rem);
-  font-weight: 700;
-  color: var(--cyan);
-  position: relative;
-}
-.flip-card::after {
-  content:''; position:absolute; width:100%; height:1px; background:rgba(255,255,255,0.05); top:50%;
-}
-.label { margin-top: 12px; font-size: 12px; color: var(--gold); letter-spacing: 2px; font-weight: 600; }
-
-.date-pill {
-  display: inline-flex; align-items: center; gap: 12px; padding: 12px 28px;
-  border-radius: 50px; border: 1px solid var(--border); background: var(--bg2);
-  font-weight: 600; letter-spacing: 2px; font-size: 1rem; color: #fff;
-}
-.date-pill span:first-child { color: var(--gold); }
-.tagline { margin-top: 30px; font-size: 1.2rem; font-weight: 600; color: #fff; display: flex; justify-content: center; align-items: center; gap: 10px; }
-.highlight { margin-top: 10px; font-size: 1.8rem; font-weight: 700; color: var(--gold); }
-.glow-line { width: 250px; height: 2px; margin: 25px auto 0; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.6; }
-
-@keyframes flip{ 0%{transform:rotateX(0)} 50%{transform:rotateX(-90deg)} 100%{transform:rotateX(0)} }
-.flip { animation: flip 0.6s; }
-
-/* ── SERVICES, PROJECTS, ETC (Rest of your original CSS) ── */
+/* ── SERVICES ── */
 .services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem}
 .service-card{
   background:var(--bg2);border:1px solid var(--border);border-radius:12px;
   padding:2rem 1.5rem;text-align:center;transition:all .3s;position:relative;overflow:hidden;
 }
+.service-card::before{content:'';position:absolute;inset:0;background:var(--cyan-soft);opacity:0;transition:opacity .3s}
 .service-card:hover{border-color:rgba(0,229,255,0.45);transform:translateY(-5px);box-shadow:0 12px 35px rgba(0,229,255,0.12)}
+.service-card:hover::before{opacity:1}
 .service-icon-wrap{
   width:64px;height:64px;border-radius:50%;
   background:var(--cyan-soft);border:1.5px solid rgba(0,229,255,0.3);
@@ -170,57 +142,148 @@ section{padding:5.5rem 5% 4rem}
 .service-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:.75rem}
 .service-card p{font-size:.8rem;color:var(--muted);line-height:1.75;margin-bottom:1.25rem}
 .service-price{font-size:.8rem;color:var(--cyan);font-weight:600;margin-bottom:1.25rem;display:block}
+.btn-sm{padding:.5rem 1.25rem;font-size:.78rem}
 
+/* ── PROJECTS ── */
+/* ── PROJECTS ── */
 #projects{background:var(--bg2)}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.proj-card{border-radius:10px;overflow:hidden;position:relative;aspect-ratio:4/3;cursor:pointer;background:var(--bg3)}
-.proj-img{width:100%;height:100%;object-fit:cover;display:block}
+
+.proj-card{
+  border-radius:10px;
+  overflow:hidden;
+  position:relative;
+  aspect-ratio:4/3;
+  cursor:pointer;
+  background:var(--bg3);
+}
+
+/* ✅ ADD THIS HERE */
+.proj-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 .proj-thumb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;transition:transform .4s;overflow:hidden;}
 .proj-overlay{
   position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 60%);
-  opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:1rem;
+  opacity:0;transition:opacity .3s;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:1rem;
 }
 .proj-card:hover .proj-thumb{transform:scale(1.06)}
 .proj-card:hover .proj-overlay{opacity:1}
+.proj-overlay h4{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:.25rem}
+.proj-overlay p{font-size:.75rem;color:var(--cyan)}
+.p1{background:linear-gradient(135deg,#0d1525,#0a2a3a)}
+.p2{background:linear-gradient(135deg,#1a0d2e,#2a0d3a)}
+.p3{background:linear-gradient(135deg,#0d200d,#0a2a1a)}
+.p4{background:linear-gradient(135deg,#2a1a0d,#3a200a)}
+.p5{background:linear-gradient(135deg,#0d1a2a,#0a0d3a)}
+.p6{background:linear-gradient(135deg,#2a0d0d,#3a1010)}
 
-/* ── TIMELINE & SKILLS ── */
+/* ── EXPERIENCE ── */
 .timeline{position:relative;padding-left:2.5rem}
 .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--cyan),transparent)}
 .tl-item{position:relative;margin-bottom:2.5rem}
 .tl-dot{position:absolute;left:-2.5rem;top:5px;width:12px;height:12px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px rgba(0,229,255,0.6);transform:translateX(-5px)}
+.tl-dot.old{background:var(--bg3);border:2px solid var(--muted);box-shadow:none}
 .tl-year{font-size:.72rem;color:var(--cyan);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem}
+.tl-year.old{color:var(--muted)}
 .tl-role{font-size:1rem;font-weight:700;color:#fff;margin-bottom:.15rem}
 .tl-company{font-size:.8rem;color:var(--muted);margin-bottom:.6rem}
 .tl-desc{font-size:.8rem;color:var(--muted);line-height:1.8;max-width:560px}
 
+/* ── SKILLS ── */
 #skills{background:var(--bg2)}
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
 .skill-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;transition:border-color .2s}
+.skill-card:hover{border-color:rgba(0,229,255,0.4)}
+.skill-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
 .skill-name{font-size:.82rem;font-weight:600;color:#fff}
-.skill-bar{height:4px;background:rgba(255,255,255,0.07);border-radius:2px;margin-top:8px}
+.skill-pct{font-size:.78rem;color:var(--cyan);font-weight:600}
+.skill-bar{height:4px;background:rgba(255,255,255,0.07);border-radius:2px}
 .skill-fill{height:100%;background:linear-gradient(90deg,var(--cyan),#0077ff);border-radius:2px}
 
-/* ── CONTACT & FOOTER ── */
-.contact-inner{display:grid;grid-template-columns:1fr 1.3fr;gap:3.5rem;align-items:start}
-.contact-form{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2.5rem}
-.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
-.form-group input, .form-group textarea, .form-group select{
-  background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:.75rem 1rem;border-radius:8px;outline:none;
-}
+/* ── REVIEWS ── */
+.reviews-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem}
+.overall-rating{display:flex;align-items:center;gap:1.5rem;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.25rem 2rem}
+.big-score{font-size:3.5rem;font-weight:800;color:#fff;line-height:1}
+.rating-right{}
+.stars-row{display:flex;gap:3px;margin-bottom:.3rem}
+.star{font-size:1.1rem;color:#ffd700}
+.star.half{position:relative;color:rgba(255,215,0,.3)}
+.star.half::before{content:'★';position:absolute;left:0;color:#ffd700;width:50%;overflow:hidden}
+.rating-count{font-size:.78rem;color:var(--muted)}
+.rating-bars{display:flex;flex-direction:column;gap:.5rem;min-width:200px}
+.rbar-row{display:flex;align-items:center;gap:.75rem}
+.rbar-label{font-size:.75rem;color:var(--muted);width:32px;text-align:right;flex-shrink:0}
+.rbar-track{flex:1;height:6px;background:rgba(255,255,255,0.07);border-radius:3px}
+.rbar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#ffd700,#ffaa00)}
+.rbar-count{font-size:.72rem;color:var(--muted);width:24px;flex-shrink:0}
 
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+.review-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.75rem;transition:border-color .25s,transform .25s}
+.review-card:hover{border-color:rgba(0,229,255,0.3);transform:translateY(-3px)}
+.review-top{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.rev-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+.av-c{background:rgba(0,229,255,0.15);color:var(--cyan);border:1.5px solid rgba(0,229,255,0.3)}
+.av-p{background:rgba(123,94,167,0.2);color:#b08fce;border:1.5px solid rgba(123,94,167,0.3)}
+.av-o{background:rgba(255,150,50,0.15);color:#ff9632;border:1.5px solid rgba(255,150,50,0.3)}
+.av-g{background:rgba(50,200,100,0.15);color:#32c864;border:1.5px solid rgba(50,200,100,0.3)}
+.rev-name{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:2px}
+.rev-role{font-size:.72rem;color:var(--muted)}
+.rev-stars{display:flex;gap:2px;margin-bottom:.85rem}
+.rev-star{font-size:.85rem;color:#ffd700}
+.rev-quote{font-size:.82rem;color:var(--muted);line-height:1.8;position:relative;padding-left:1.25rem}
+.rev-quote::before{content:'"';position:absolute;left:0;top:-.2rem;font-size:2rem;color:var(--cyan);opacity:.35;font-family:serif;line-height:1}
+.rev-date{font-size:.7rem;color:rgba(122,128,153,.5);margin-top:.85rem;display:flex;align-items:center;gap:.4rem}
+.rev-date::before{content:'';display:inline-block;width:16px;height:1px;background:rgba(122,128,153,.3)}
+.rev-tag{display:inline-block;font-size:.68rem;color:var(--cyan);border:1px solid rgba(0,229,255,.2);border-radius:20px;padding:2px 10px;margin-top:.75rem}
+
+/* ── CONTACT ── */
+.contact-inner{display:grid;grid-template-columns:1fr 1.3fr;gap:3.5rem;align-items:start}
+.contact-info h2{font-size:1.9rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:1rem}
+.contact-info h2 span{color:var(--cyan)}
+.contact-info p{font-size:.85rem;color:var(--muted);line-height:1.85;margin-bottom:2rem}
+.contact-items{display:flex;flex-direction:column;gap:1rem}
+.contact-item{display:flex;align-items:center;gap:1rem}
+.c-icon{width:42px;height:42px;border-radius:50%;background:var(--cyan-soft);border:1.5px solid rgba(0,229,255,.25);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.c-label{font-size:.72rem;color:var(--muted);margin-bottom:2px}
+.c-val{font-size:.85rem;color:#fff;font-weight:500}
+.contact-form{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+.form-group label{font-size:.72rem;color:var(--muted);font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.form-group input,.form-group textarea,.form-group select{
+  background:var(--bg3);border:1px solid var(--border);color:var(--text);
+  font-family:var(--ff);font-size:.85rem;padding:.75rem 1rem;border-radius:8px;
+  outline:none;transition:border-color .2s;resize:none;width:100%;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:rgba(0,229,255,.5);box-shadow:0 0 0 3px rgba(0,229,255,.07)}
+.form-group select option{background:var(--bg3)}
+
+/* ── FOOTER ── */
 footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.75rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-logo{font-size:1.1rem;font-weight:700;color:#fff}
+.footer-logo span{color:var(--cyan)}
 .footer-copy{font-size:.75rem;color:var(--muted)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.75rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--cyan)}
 
 @media(max-width:900px){
   .hero-inner,.about-inner,.contact-inner{flex-direction:column;grid-template-columns:1fr}
   .projects-grid{grid-template-columns:repeat(2,1fr)}
+  .form-row{grid-template-columns:1fr}
   .hex-wrap{margin:0 auto}
+  .overall-rating{flex-wrap:wrap}
 }
 @media(max-width:600px){
-  .nav-links{display:none} /* Simplification for mobile nav */
+  nav{padding:1rem 4%}.nav-links{gap:1rem}
   section{padding:4rem 4% 3rem}
   .projects-grid{grid-template-columns:1fr}
+  .reviews-header{flex-direction:column}
 }
 </style>
 </head>
@@ -231,9 +294,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.75rem 
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#launch-countdown">Launch</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#reviews">Reviews</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -243,12 +306,13 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.75rem 
     <div class="hero-text">
       <p class="greeting">Hello, It's Me</p>
       <h1>Amit Rai</h1>
-      <p class="role">And I'm a <span>Graphic Designer</span></p>
+      <p class="role">And I'm a <span style="color:var(--cyan)">Graphic Designer</span></p>
       <p>I craft bold visual identities and digital experiences that bridge the gap between bold ideas and impactful design.</p>
       <div class="hero-socials">
         <a class="social-icon" href="#">f</a>
         <a class="social-icon" href="#">t</a>
         <a class="social-icon" href="#">in</a>
+        <a class="social-icon" href="#">be</a>
       </div>
       <div class="hero-btns">
         <a class="btn btn-cyan" href="#">Download CV</a>
@@ -258,9 +322,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.75rem 
     <div class="hex-wrap">
       <div class="hex-glow"></div>
       <div class="hex-shape">
-        <div class="hex-inner">
-          <img src="https://i.ibb.co/gZwkxDN0/photo-jpg.jpg" alt="my photo">
-        </div>
+       <div class="hex-inner">
+  <img src="https://i.ibb.co/gZwkxDN0/photo-jpg.jpg" alt="my photo">
+</div>
       </div>
     </div>
   </div>
@@ -277,41 +341,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.75rem 
     <div class="about-text">
       <h2>About <span>Me</span></h2>
       <h3>Designing with Purpose</h3>
-      <p>My approach to graphic design is rooted in the belief that every brand has a story worth telling. Based in Kalyan, I specialize in transforming complex concepts into clean, functional, and aesthetically striking visuals.</p>
-      <div style="display:flex;gap:1rem;margin-top:1.5rem">
+      <p>My approach to graphic design is rooted in the belief that every brand has a story worth telling. Based in Kalyan, I specialize in transforming complex concepts into clean, functional, and aesthetically striking visuals. Whether it’s building a brand identity from scratch or creating engaging digital assets, I focus on precision and creativity.</p>
+      <p>I am driven by the challenge of staying ahead of design trends while maintaining timeless quality. My philosophy is simple: design should not only look good but should solve problems and create a lasting connection with the audience.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
         <a class="btn btn-cyan btn-sm" href="#projects">View Work</a>
+        <a class="btn btn-outline btn-sm" href="#contact">Let's Talk</a>
       </div>
     </div>
   </div>
-</section>
-
-<section id="launch-countdown">
-  <div class="section-tag">Coming Soon</div>
-  <h2 class="section-heading">Countdown to <span>Extraordinary</span></h2>
-  
-  <div class="countdown-grid">
-    <div>
-      <div id="days" class="flip-card">00</div>
-      <div class="label">DAYS</div>
-    </div>
-    <div>
-      <div id="hours" class="flip-card">00</div>
-      <div class="label">HOURS</div>
-    </div>
-    <div>
-      <div id="minutes" class="flip-card">00</div>
-      <div class="label">MINUTES</div>
-    </div>
-    <div>
-      <div id="seconds" class="flip-card">00</div>
-      <div class="label">SECONDS</div>
-    </div>
-  </div>
-
-  <div class="date-pill"><span>📅</span> 15 JUNE 2026</div>
-  <div class="tagline"><span>⏳</span> Big Things Take Time...</div>
-  <div class="highlight">Portfolio Full Reveal</div>
-  <div class="glow-line"></div>
 </section>
 
 <section id="services">
