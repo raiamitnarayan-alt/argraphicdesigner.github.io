@@ -300,7 +300,246 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.75rem 
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#0b0f14;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  flex-direction:column;
+  text-align:center;
+}
+
+/* TITLE */
+h1{
+  font-size:42px;
+  letter-spacing:3px;
+  margin-bottom:40px;
+}
+
+/* COUNTDOWN */
+.countdown{
+  display:flex;
+  gap:25px;
+}
+
+/* CARD */
+.flip-card{
+  width:130px;
+  height:140px;
+  background:#11161c;
+  border-radius:18px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
+  font-weight:700;
+  position:relative;
+}
+
+/* CENTER LINE */
+.flip-card::after{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:2px;
+  background:#000;
+  top:50%;
+}
+
+/* LABEL */
+.label{
+  margin-top:12px;
+  font-size:14px;
+  color:#f9b233;
+  letter-spacing:2px;
+}
+
+/* DATE PILL */
+.date-pill{
+  margin-top:55px;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 32px;
+  border-radius:50px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.02);
+  backdrop-filter:blur(10px);
+  font-weight:600;
+  letter-spacing:3px;
+  font-size:18px;
+}
+
+.date-pill span:first-child{
+  color:#f9b233;
+  font-size:20px;
+}
+
+/* SUB TEXT */
+.date-sub{
+  margin-top:14px;
+  font-size:13px;
+  color:#7a7f86;
+  letter-spacing:4px;
+  font-weight:500;
+}
+
+/* TAGLINE */
+.tagline{
+  margin-top:45px;
+  font-size:28px;
+  font-weight:600;
+  color:#e5e7eb;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+
+.tagline span:first-child{
+  color:#f9b233;
+  font-size:26px;
+}
+
+/* HIGHLIGHT */
+.highlight{
+  margin-top:12px;
+  font-size:34px;
+  font-weight:700;
+  color:#f9b233;
+  letter-spacing:0.5px;
+}
+
+/* GLOW */
+.glow-line{
+  width:320px;
+  height:6px;
+  margin:30px auto 0;
+  background:radial-gradient(circle, #f9b233 0%, rgba(249,178,51,0.4) 40%, transparent 80%);
+  border-radius:50%;
+  filter:blur(1px);
+}
+
+/* FLIP ANIMATION */
+.flip{
+  animation:flip 0.6s;
+}
+
+@keyframes flip{
+  0%{transform:rotateX(0)}
+  50%{transform:rotateX(-90deg)}
+  100%{transform:rotateX(0)}
+}
+</style>
+</head>
+
+<body>
+
+<h1>COMING SOON ....</h1>
+
+<div class="countdown">
+
+  <div>
+    <div id="days" class="flip-card">00</div>
+    <div class="label">DAYS</div>
+  </div>
+
+  <div>
+    <div id="hours" class="flip-card">00</div>
+    <div class="label">HOURS</div>
+  </div>
+
+  <div>
+    <div id="minutes" class="flip-card">00</div>
+    <div class="label">MINUTES</div>
+  </div>
+
+  <div>
+    <div id="seconds" class="flip-card">00</div>
+    <div class="label">SECONDS</div>
+  </div>
+
+</div>
+
+<!-- DATE -->
+<div class="date-pill">
+  <span>📅</span>
+  <span>15 JUNE 2026</span>
+</div>
+
+<div class="date-sub">
+  MONTH &nbsp; | &nbsp; DAY &nbsp; | &nbsp; YEAR
+</div>
+
+<!-- TEXT -->
+<div class="tagline">
+  <span>⏳</span>
+  <span>Big Things Take Time...</span>
+</div>
+
+<div class="highlight">
+  Countdown to Something Extraordinary
+</div>
+
+<div class="glow-line"></div>
+
+<script>
+const target = new Date("June 15, 2026 00:00:00").getTime();
+
+let prev = {d:0,h:0,m:0,s:0};
+
+function update(){
+  const now = new Date().getTime();
+  const diff = target - now;
+
+  const d = Math.floor(diff/(1000*60*60*24));
+  const h = Math.floor((diff/(1000*60*60))%24);
+  const m = Math.floor((diff/(1000*60))%60);
+  const s = Math.floor((diff/1000)%60);
+
+  flip("days",d,prev.d);
+  flip("hours",h,prev.h);
+  flip("minutes",m,prev.m);
+  flip("seconds",s,prev.s);
+
+  prev={d,h,m,s};
+}
+
+function flip(id,val,old){
+  const el=document.getElementById(id);
+  if(val!==old){
+    el.classList.add("flip");
+    setTimeout(()=>el.classList.remove("flip"),600);
+  }
+  el.innerText=String(val).padStart(2,'0');
+}
+
+setInterval(update,1000);
+update();
+</script>
+
+</body>
+</html>
 <section id="home">
   <div class="hero-inner">
     <div class="hero-text">
